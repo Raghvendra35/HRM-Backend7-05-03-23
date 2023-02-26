@@ -30,7 +30,7 @@ import com.employee.service.EmployeeService;
 
 @RestController
 @RequestMapping("api/employee")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class EmployeeController 
 {
 	

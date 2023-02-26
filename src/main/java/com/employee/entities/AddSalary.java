@@ -32,10 +32,7 @@ public class AddSalary
 	private double pf;
 	private double esi;
 	private double medicalInsurance;
-	
-	
-	
-	
+    private double salaryDeducted;	
 	
 	@OneToOne(targetEntity = Employee.class)
 	private Employee employee;

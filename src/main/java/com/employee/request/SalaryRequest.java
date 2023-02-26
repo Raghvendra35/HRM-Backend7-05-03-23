@@ -19,6 +19,7 @@ public class SalaryRequest
 	private double pf;
 	private double esi;
 	private double medicalInsurance;
+	private double salaryDeducted;	
 	
 	
 

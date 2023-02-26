@@ -1,12 +1,17 @@
 package com.employee.controller;
 
+import java.io.ByteArrayInputStream;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,13 +62,13 @@ public class AddSalaryController
     	    	
     	 Optional<AddSalary> salary=this.addSalaryService.getSalaryById(salaryId);
     	
-    	if(salary==null)
-    	{
-    	 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();	
-    	}else
-    	{
+//    	if(salary==null)
+//    	{
+//    	 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();	
+//    	}else
+    	//{
     	 return ResponseEntity.of(Optional.of(salary));
-    	}
+    	//}
     	
     }
     
@@ -153,6 +158,32 @@ public class AddSalaryController
        {
     	   return this.addSalaryService.findAllSalaryWithPagination(page);
        }
+       
+       
+       
+       // Here Code of Pdf
+       
+       @GetMapping("/salarslippdf")
+       public ResponseEntity<InputStreamResource> createSalaryPdf()
+       {
+    	ByteArrayInputStream salaryPdf=this.addSalaryService.generateSalarySlipPdf();
+    	 
+    	HttpHeaders httpHeaders=new HttpHeaders();
+    	httpHeaders.add("Content-Disposition","inline; file=SalarSlip.pdf");
+    	
+    	
+    	return ResponseEntity.ok()
+    			             .headers(httpHeaders)
+    			             .contentType(MediaType.APPLICATION_PDF)
+    			             .body(new InputStreamResource(salaryPdf));
+    	
+       }
+       
+       
+       
+       
+       
+       
 }
 
 

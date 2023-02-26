@@ -19,10 +19,10 @@ public class Qualification
   //private Employee employee;
   
   
-  
-public Qualification() {
+public Qualification() 
+{
 	super();
-	
+	// TODO Auto-generated constructor stub
 }
 public Qualification(int qualificationId, String course, String board, String passingyear, String status,
 		double percentage) {
@@ -33,9 +33,6 @@ public Qualification(int qualificationId, String course, String board, String pa
 	this.passingyear = passingyear;
 	this.status = status;
 	this.percentage = percentage;
-	
-	
-	
 }
 public int getQualificationId() {
 	return qualificationId;
@@ -78,8 +75,9 @@ public String toString() {
 	return "Qualification [qualificationId=" + qualificationId + ", course=" + course + ", board=" + board
 			+ ", passingyear=" + passingyear + ", status=" + status + ", percentage=" + percentage + "]";
 }
-
-
+  
+  
+  
 
 
 }
